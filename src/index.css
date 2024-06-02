@@ -191,3 +191,8 @@ li label{
 .home-button {
   padding: 40px;
 }
+
+label:hover {
+  background-color: darkgreen; /* Change to desired hover color */
+  cursor: pointer;
+}

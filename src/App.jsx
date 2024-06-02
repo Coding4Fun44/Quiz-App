@@ -42,7 +42,7 @@ function App() {
       <div className="app">
         <Routes>
           <Route
-            path="/"
+            path="/Quiz-App"
             element={<Home generateQuiz={generateQuiz} quiz={selectedQuiz} />}
           ></Route>
           <Route

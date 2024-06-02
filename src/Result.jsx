@@ -34,7 +34,7 @@ const Result = ({
           );
         }
       })}
-      <Link to="/">
+      <Link to="/Quiz-App">
         <div className="home-button">
           <button className="home">Back to Main Menu</button>
         </div>

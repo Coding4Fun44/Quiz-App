@@ -150,7 +150,7 @@ const Home = ({ generateQuiz }) => {
           <button
             className="find-quiz"
             onClick={() => {
-              handleGenerateQuiz(); /*, handleNavigation();*/
+              handleGenerateQuiz();
             }}
           >
             Generate Quiz

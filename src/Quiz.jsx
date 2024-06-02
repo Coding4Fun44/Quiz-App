@@ -15,6 +15,7 @@ const Quiz = ({ quiz, updateScore, wrongAnswer }) => {
   const [realAnswers, setRealAnswers] = useState(Array(quiz.length).fill(null));
   const currentQuestion = quiz[currentQuestionIndex];
   const [shuffledOptions, setShuffledOptions] = useState([]);
+  const [answerOrder, setAnswerOrder] = useState(Array(quiz.length).fill(null));
 
   const shuffleArray = (array) => {
     const shuffledArray = [...array];
@@ -25,6 +26,9 @@ const Quiz = ({ quiz, updateScore, wrongAnswer }) => {
         shuffledArray[i],
       ];
     }
+    const updatedAnswerOrder = [...answerOrder];
+    updatedAnswerOrder[currentQuestionIndex] = shuffledArray;
+    setAnswerOrder(updatedAnswerOrder);
     return shuffledArray;
   };
 
@@ -53,7 +57,11 @@ const Quiz = ({ quiz, updateScore, wrongAnswer }) => {
       ...currentQuestion.incorrect_answers,
       currentQuestion.correct_answer,
     ];
-    setShuffledOptions(shuffleArray(options));
+    {
+      answerOrder[currentQuestionIndex] === null
+        ? setShuffledOptions(shuffleArray(options))
+        : setShuffledOptions(answerOrder[currentQuestionIndex]);
+    }
     setSelectedOption(answers[currentQuestionIndex]);
   }, [currentQuestionIndex, quiz]);
 
@@ -145,15 +153,14 @@ const Quiz = ({ quiz, updateScore, wrongAnswer }) => {
         </div>
       )}
       <div className="buttons">
-        {currentQuestionIndex > 0 ? (
+        {currentQuestionIndex > 0 && (
           <button className="back" onClick={prevQuestion}>
             Back
           </button>
-        ) : (
-          <Link to="/">
-            <button className="back">Back to Main Menu</button>
-          </Link>
         )}
+        <Link to="/Quiz-App">
+          <button className="back">Back to Main Menu</button>
+        </Link>
         {currentQuestionIndex < quiz.length - 1 ? (
           <button className="next" onClick={nextQuestion}>
             Next
