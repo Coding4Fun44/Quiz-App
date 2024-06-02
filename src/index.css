@@ -111,7 +111,8 @@ h2 {
 }
 
 .quiz-button {
-  padding: 40px;
+  align-items: center;
+  padding-top: 40px;
 }
 
 .amount-container, .category-container, .difficulty-container, .type-container {
@@ -189,7 +190,8 @@ li label{
 }
 
 .home-button {
-  padding: 40px;
+  align-items: center;
+  padding-top: 40px;
 }
 
 label:hover {
